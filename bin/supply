@@ -14,5 +14,9 @@ DEPS_IDX=$4
 # GOROOT=$GoInstallDir/go GOPATH=$BUILDPACK_DIR $GoInstallDir/go/bin/go build -o $output_dir/supply apt/supply/cli
 #
 # $output_dir/supply "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" "$DEPS_IDX"
-echo "Doing nothing yet in the redis-buildpack"
+echo "-----> Doing nothing yet in the redis-buildpack"
+echo "       \$BUILD_DIR $BUILD_DIR"
+echo "       \$CACHE_DIR $CACHE_DIR"
+echo "       \$DEPS_DIR  $DEPS_DIR"
+echo "       \$DEPS_IDX  $DEPS_IDX"
 exit 0
