@@ -1,0 +1,8 @@
+.vagrant
+.bundle
+/.idea
+log/
+*buildpack*.zip
+pkg/
+/.bin/
+tmp
