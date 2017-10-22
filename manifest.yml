@@ -1,22 +1,11 @@
 ---
 language: redis
-default_versions:
-- name: redis
-  version: 4.0.2
-dependencies:
-- name: redis
-  version: 4.0.2
-  uri: https://buildpacks.cloudfoundry.org/dependencies/redis/redis-4.0.2-linux-x64-UNKNOWN.tgz
-  md5: UNKNOWN
-  cf_stacks:
-  - cflinuxfs2pre_package: scripts/build.sh
+default_versions: []
+dependencies: []
 include_files:
 - LICENSE
 - README.md
 - VERSION
 - bin/compile
-- bin/detect
-- bin/finalize
-- bin/release
 - bin/supply
 - manifest.yml
