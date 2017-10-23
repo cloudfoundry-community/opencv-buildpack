@@ -17,3 +17,9 @@ docker run -ti \
   cloudfoundry/cflinuxfs2 \
   /buildpack/packages/redis/compile.sh
 ```
+
+If you have access to the CF Community S3 account, you can then upload new compiled blobs:
+
+```
+aws --profile cfcommunity s3 sync tmp/redis-output/blobs s3://redis-buildpack/blobs/redis
+```

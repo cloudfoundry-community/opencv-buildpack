@@ -17,5 +17,14 @@ cd redis-*/
 
 make PREFIX=${TMP_BUILD_DIR} install
 
+mkdir -p ${OUTPUT_DIR}/blobs
+mkdir -p ${OUTPUT_DIR}/manifest
+
 cd $TMP_BUILD_DIR
-tar cfz ${OUTPUT_DIR}/redis-compiled-${VERSION}.tgz .
+tar cfz ${OUTPUT_DIR}/blobs/redis-compiled-${VERSION}.tgz .
+
+cd ${OUTPUT_DIR}
+echo "${VERSION}" > manifest/version
+echo "redis-compiled-${VERSION}.tgz" > manifest/filename
+sha1sum blobs/redis-compiled-${VERSION}.tgz | awk '{print $1}' > manifest/sha1
+md5 blobs/redis-compiled-${VERSION}.tgz | awk '{print $4}' > manifest/md5
