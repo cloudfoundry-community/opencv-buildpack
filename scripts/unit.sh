@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-buildpack=redis
+buildpack=opencv
 
 export ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 

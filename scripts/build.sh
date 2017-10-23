@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-buildpack=redis
+buildpack=opencv
 
 export ROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 BINDIR=$ROOTDIR/bin

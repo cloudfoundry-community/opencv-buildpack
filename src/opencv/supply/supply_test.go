@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"redis/supply"
+	"opencv/supply"
 
 	"bytes"
 
@@ -31,7 +31,7 @@ var _ = Describe("Supply", func() {
 	)
 
 	BeforeEach(func() {
-		depsDir, err = ioutil.TempDir("", "redis-buildpack.deps.")
+		depsDir, err = ioutil.TempDir("", "opencv-buildpack.deps.")
 		Expect(err).To(BeNil())
 
 		depsIdx = "32"
@@ -65,23 +65,23 @@ var _ = Describe("Supply", func() {
 		Expect(err).To(BeNil())
 	})
 
-	Describe("Install Redis", func() {
+	Describe("Install OpenCV", func() {
 		BeforeEach(func() {
-			dep := libbuildpack.Dependency{Name: "redis", Version: "99.99"}
+			dep := libbuildpack.Dependency{Name: "opencv", Version: "99.99"}
 
-			mockManifest.EXPECT().DefaultVersion("redis").Return(dep, nil)
+			mockManifest.EXPECT().DefaultVersion("opencv").Return(dep, nil)
 			mockManifest.EXPECT().InstallDependency(dep, depDir)
 		})
 
-		It("Installs redis to the depDir, creating a symlink in <depDir>/bin", func() {
-			Expect(supplier.InstallRedis()).To(Succeed())
-			Expect(buffer.String()).To(ContainSubstring("-----> Installing redis"))
-			Expect(buffer.String()).To(ContainSubstring("       Using redis version 99.99"))
+		It("Installs opencv to the depDir, creating a symlink in <depDir>/bin", func() {
+			Expect(supplier.InstallOpenCV()).To(Succeed())
+			Expect(buffer.String()).To(ContainSubstring("-----> Installing opencv"))
+			Expect(buffer.String()).To(ContainSubstring("       Using opencv version 99.99"))
 
-			link, err := os.Readlink(filepath.Join(depDir, "bin", "redis-cli"))
+			link, err := os.Readlink(filepath.Join(depDir, "bin", "opencv-cli"))
 			Expect(err).To(BeNil())
 
-			Expect(link).To(Equal("../redis/bin/redis-cli"))
+			Expect(link).To(Equal("../opencv/bin/opencv-cli"))
 		})
 	})
 })

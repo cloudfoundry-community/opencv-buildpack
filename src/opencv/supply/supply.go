@@ -19,26 +19,26 @@ type Supplier struct {
 }
 
 func Run(ss *Supplier) error {
-	if err := ss.InstallRedis(); err != nil {
-		ss.Log.Error("Unable to install redis: %s", err.Error())
+	if err := ss.InstallOpenCV(); err != nil {
+		ss.Log.Error("Unable to install opencv: %s", err.Error())
 		return err
 	}
 
 	return nil
 }
 
-func (ss *Supplier) InstallRedis() error {
-	ss.Log.BeginStep("Installing redis")
+func (ss *Supplier) InstallOpenCV() error {
+	ss.Log.BeginStep("Installing opencv")
 
-	redis, err := ss.Manifest.DefaultVersion("redis")
+	opencv, err := ss.Manifest.DefaultVersion("opencv")
 	if err != nil {
 		return err
 	}
-	ss.Log.Info("Using redis version %s", redis.Version)
+	ss.Log.Info("Using opencv version %s", opencv.Version)
 
-	if err := ss.Manifest.InstallDependency(redis, ss.Stager.DepDir()); err != nil {
+	if err := ss.Manifest.InstallDependency(opencv, ss.Stager.DepDir()); err != nil {
 		return err
 	}
 	return nil
-	// return ss.Stager.AddBinDependencyLink(filepath.Join(ss.Stager.DepDir(), "redis", "bin", "redis-cli"), "redis-cli")
+	// return ss.Stager.AddBinDependencyLink(filepath.Join(ss.Stager.DepDir(), "opencv", "bin", "opencv-cli"), "opencv-cli")
 }

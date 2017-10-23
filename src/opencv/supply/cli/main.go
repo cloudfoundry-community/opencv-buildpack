@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	// _ "redis/hooks"
-	"redis/supply"
+	// _ "opencv/hooks"
+	"opencv/supply"
 	"time"
 
 	"github.com/cloudfoundry/libbuildpack"
