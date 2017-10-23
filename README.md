@@ -26,8 +26,9 @@ Downloaded app package (826B)
        Using opencv version 3.3.0
 -----> Installing opencv 3.3.0
        Download [http://opencv-buildpack.s3-website-us-east-1.amazonaws.com/blobs/opencv/opencv-compiled-3.3.0.tgz]
------> Python Buildpack version 1.7.4
+-----> Python Buildpack version 1.6.1
 -----> Supplying Python
+-----> Installing python 3.6.3
 ...
 ```
 

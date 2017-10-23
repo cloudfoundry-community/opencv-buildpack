@@ -1,2 +1,4 @@
 Flask==0.12.2
 jsonpickle
+numpy
+opencv-python
