@@ -2,6 +2,8 @@
 
 Cloud Foundry applications can blend multiple buildpacks together. If your application would like the `redis-cli` or even the `redis-server` and its other files, then this buildpack is for you.
 
+If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from [Keaty Gross at CF Summit EU 2017](https://www.youtube.com/watch?v=41wEXS03U78).
+
 ```
 cf v3-push sample-app-with-redis -p fixtures/sample \
   -b https://github.com/cloudfoundry-community/redis-buildpack \
