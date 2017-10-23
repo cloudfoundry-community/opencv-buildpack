@@ -5,7 +5,8 @@ Our buildpack users will need to download a pre-compiled version of opencv. This
 First, build an image with the compilation dependencies:
 
 ```
-docker build -t cfcommunity/opencv-buildpack-pkg-builder packages/opencv
+NAME=opencv
+docker build -t cfcommunity/$${NAME:?required}-buildpack-pkg-builder packages/$NAME
 ```
 
 ```
@@ -19,12 +20,13 @@ docker run -ti \
   -v $PWD/tmp/opencv-src:/opencv-src \
   -v $PWD/tmp/opencv-unpack:/opencv-unpack \
   -v $PWD/tmp/opencv-output:/opencv-output \
+  -e NAME=${NAME:?required} \
   -e VERSION=${VERSION:?required} \
   -e SRC_DIR=/opencv-src \
   -e TMP_SRC_DIR=/opencv-unpack \
   -e OUTPUT_DIR=/opencv-output \
   cfcommunity/opencv-buildpack-pkg-builder \
-  /buildpack/packages/opencv/compile.sh
+  /buildpack/packages/$NAME/compile.sh
 ```
 
 If you have access to the CF Community S3 account, you can then upload new compiled blobs:
@@ -36,7 +38,14 @@ aws --profile cfcommunity s3 sync tmp/opencv-output/blobs s3://opencv-buildpack/
 Then update `manifest.yml` with the full path for the download file and the `md5` value:
 
 ```
-cat tmp/opencv-output/manifest/md5
+docker run -ti \
+  -v $PWD:/buildpack \
+  -v $PWD/tmp/opencv-output:/opencv-output \
+  -e NAME=${NAME:?required} \
+  -e VERSION=${VERSION:?required} \
+  -e OUTPUT_DIR=/opencv-output \
+  cfcommunity/opencv-buildpack-pkg-builder \
+  /buildpack/packages/$NAME/update_manifest.sh
 ```
 
 This really should be automated in future.
