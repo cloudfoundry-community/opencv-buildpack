@@ -4,6 +4,9 @@ Cloud Foundry applications can blend multiple buildpacks together. If your appli
 
 If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from [Keaty Gross at CF Summit EU 2017](https://www.youtube.com/watch?v=41wEXS03U78).
 
+
+## Example
+
 ```
 cf v3-push sample-app-with-opencv -p fixtures/sample \
   -b https://github.com/cloudfoundry-community/opencv-buildpack \
@@ -45,6 +48,10 @@ The response should be:
 ```
 {'message': 'image received. size=512x512'}
 ```
+
+## Usage
+
+You might also need to use the [apt-buildpack](https://github.com/cloudfoundry/apt-buildpack) to include any runtime dependencies you need.
 
 ## Building latest OpenCV
 
