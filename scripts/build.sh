@@ -10,4 +10,3 @@ export GOPATH=$ROOTDIR
 export GOOS=linux
 
 go build -ldflags="-s -w" -o $BINDIR/supply $buildpack/supply/cli
-go build -ldflags="-s -w" -o $BINDIR/finalize $buildpack/finalize/cli

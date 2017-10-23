@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	_ "staticfile/hooks"
-	"staticfile/supply"
+	// _ "redis/hooks"
+	"redis/supply"
 	"time"
 
 	"github.com/cloudfoundry/libbuildpack"
