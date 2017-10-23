@@ -8,12 +8,12 @@ If you want to learn how to make a "supply"-only buildpack for multi-buildpack s
 ## Example
 
 ```
-cf v3-push sample-app-with-opencv -p fixtures/sample \
+cf v3-push py-sample-app-with-opencv -p fixtures/py-sample \
   -b https://github.com/cloudfoundry-community/opencv-buildpack \
   -b python_buildpack
 ```
 
-NOTE: you may need to change `sample-app-with-opencv` to something unique if you get an error about the default route already existing on your Cloud Foundry.
+NOTE: you may need to change `py-sample-app-with-opencv` to something unique if you get an error about the default route already existing on your Cloud Foundry.
 
 During staging, you will see OpenCV being installed:
 
@@ -38,8 +38,8 @@ Downloaded app package (826B)
 Next, you can test that your app and the `opencv` library are working with a client app:
 
 ```
-cd fixtures/sample
-export SERVER_URL=https://sample-app-with-opencv.cfapps.io
+cd fixtures/py-sample
+export SERVER_URL=https://py-sample-app-with-opencv.cfapps.io
 python3 client.py
 ```
 
