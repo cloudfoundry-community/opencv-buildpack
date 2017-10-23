@@ -2,6 +2,7 @@
 
 set -e
 
+: ${VERSION:?required}
 : ${SRC_DIR:?required}
 : ${OUTPUT_DIR:?required}
 TMP_SRC_DIR=${TMP_DIR:-/tmp/src}
@@ -17,4 +18,4 @@ cd redis-*/
 make PREFIX=${TMP_BUILD_DIR} install
 
 cd $TMP_BUILD_DIR
-tar cfz ${OUTPUT_DIR}/redis.tgz .
+tar cfz ${OUTPUT_DIR}/redis-compiled-${VERSION}.tgz .
