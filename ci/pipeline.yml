@@ -18,8 +18,8 @@ meta:
   url:      (( param "Please specify the full url of the target Concourse CI" ))
 
   image:
-    name: starkandwayne/concourse
-    tag: latest
+    name: starkandwayne/concourse-go
+    tag: 1.9
 
   aws:
     bucket:     (( grab meta.pipeline ))
