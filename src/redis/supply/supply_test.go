@@ -74,7 +74,7 @@ var _ = Describe("Supply", func() {
 		})
 
 		It("Installs redis to the depDir, creating a symlink in <depDir>/bin", func() {
-			Expect(supplier.Installredis()).To(Succeed())
+			Expect(supplier.InstallRedis()).To(Succeed())
 			Expect(buffer.String()).To(ContainSubstring("-----> Installing redis"))
 			Expect(buffer.String()).To(ContainSubstring("       Using redis version 99.99"))
 
