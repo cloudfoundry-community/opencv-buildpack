@@ -46,6 +46,6 @@ The response should be:
 {'message': 'image received. size=512x512'}
 ```
 
-## Building latest opencv
+## Building latest OpenCV
 
 The [`packages/opencv`](https://github.com/cloudfoundry-community/opencv-buildpack/tree/master/packages/opencv) folder contains the instructions for compiling + uploading a binary version of OpenCV.

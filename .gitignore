@@ -6,3 +6,4 @@ log/
 pkg/
 /.bin/
 tmp
+.DS_Store

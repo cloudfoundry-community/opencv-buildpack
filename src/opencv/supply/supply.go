@@ -40,5 +40,4 @@ func (ss *Supplier) InstallOpenCV() error {
 		return err
 	}
 	return nil
-	// return ss.Stager.AddBinDependencyLink(filepath.Join(ss.Stager.DepDir(), "opencv", "bin", "opencv-cli"), "opencv-cli")
 }
