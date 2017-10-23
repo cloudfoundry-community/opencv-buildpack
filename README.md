@@ -2,7 +2,7 @@
 
 Cloud Foundry applications can blend multiple buildpacks together. If your application requires [OpenCV](https://opencv.org/), then this buildpack can help you.
 
-If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from [Keaty Gross at CF Summit EU 2017](https://www.youtube.com/watch?v=41wEXS03U78).
+If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from Keaty Gross at Cloud Foundry Summit EU 2017 in her [keynote](https://www.youtube.com/watch?v=0DnQNTq8FLw&list=PLhuMOCWn4P9hsn9q-GRTa77gxavTOnHaa&index=59) and [session talk](https://www.youtube.com/watch?v=41wEXS03U78).
 
 
 ## Example
