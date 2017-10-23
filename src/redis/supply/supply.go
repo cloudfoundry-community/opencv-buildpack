@@ -1,10 +1,6 @@
 package supply
 
-import (
-	"path/filepath"
-
-	"github.com/cloudfoundry/libbuildpack"
-)
+import "github.com/cloudfoundry/libbuildpack"
 
 type Manifest interface {
 	DefaultVersion(string) (libbuildpack.Dependency, error)
@@ -43,6 +39,6 @@ func (ss *Supplier) InstallRedis() error {
 	if err := ss.Manifest.InstallDependency(redis, ss.Stager.DepDir()); err != nil {
 		return err
 	}
-
-	return ss.Stager.AddBinDependencyLink(filepath.Join(ss.Stager.DepDir(), "redis", "bin", "redis-cli"), "redis-cli")
+	return nil
+	// return ss.Stager.AddBinDependencyLink(filepath.Join(ss.Stager.DepDir(), "redis", "bin", "redis-cli"), "redis-cli")
 }
