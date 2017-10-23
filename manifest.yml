@@ -16,4 +16,3 @@ include_files:
 - bin/supply
 - manifest.yml
 language: opencv
-
