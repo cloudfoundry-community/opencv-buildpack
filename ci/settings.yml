@@ -6,6 +6,13 @@ meta:
 
   initial_version: 0.2.0
 
+  cf:
+    api_url:         (( vault "secret/bosh-lites/lite49/cf:api_url" ))
+    admin_username:  admin
+    admin_password:  (( vault "secret/bosh-lites/lite49/cf:admin_password" ))
+    organization:    system
+    space:           dev
+
   aws:
     access_key: (( vault "secret/aws/cfcommunity:access" ))
     secret_key: (( vault "secret/aws/cfcommunity:secret" ))

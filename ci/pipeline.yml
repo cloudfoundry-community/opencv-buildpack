@@ -21,6 +21,13 @@ meta:
     name: starkandwayne/concourse-go
     tag: 1.9
 
+  cf:
+    api_url:         (( param "Please provide api_url" ))
+    admin_username:  (( param "Please provide admin_username" ))
+    admin_password:  (( param "Please provide admin_password" ))
+    organization:    (( param "Please provide organization" ))
+    space:           (( param "Please provide space" ))
+
   aws:
     bucket:     (( grab meta.pipeline ))
     region_name: us-east-1
@@ -49,11 +56,11 @@ groups:
   - name: (( grab meta.pipeline ))
     jobs:
       - unit-tests
+      - integration-tests
 
 jobs:
   - name: unit-tests
     public: true
-    serial: true
     plan:
     - do:
       - aggregate:
@@ -72,6 +79,39 @@ jobs:
             path: ./git/scripts/unit.sh
             args: []
           params: {}
+      on_failure:
+        put: notify
+        params:
+          channel:  (( grab meta.slack.channel ))
+          username: (( grab meta.slack.username ))
+          icon_url: (( grab meta.slack.icon ))
+          text:    '(( concat meta.slack.fail_url " " meta.pipeline ": unit-tests job failed" ))'
+
+  - name: integration-tests
+    public: true
+    plan:
+    - do:
+      - aggregate:
+        - { get: git, trigger: true }
+      - task: integration-tests
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: (( grab meta.image.name ))
+              tag:        (( grab meta.image.tag ))
+          inputs:
+            - { name: git }
+          run:
+            path: ./git/scripts/integration.sh
+            args: []
+          params:
+            CF_API_URL: (( grab meta.cf.api_url ))
+            CF_USERNAME: (( grab meta.cf.admin_username ))
+            CF_PASSWORD: (( grab meta.cf.admin_password ))
+            CF_ORGANIZATION: (( grab meta.cf.organization ))
+            CF_SPACE: (( grab meta.cf.space ))
       on_failure:
         put: notify
         params:
