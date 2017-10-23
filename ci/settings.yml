@@ -1,0 +1,5 @@
+---
+meta:
+  name: opencv
+  target:  sw
+  url:     https://ci.starkandwayne.com

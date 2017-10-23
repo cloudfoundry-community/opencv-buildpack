@@ -1,0 +1,8 @@
+---
+meta:
+  name:     (( param "Please name your pipeline" ))
+  pipeline: (( concat meta.name "-buildpack" ))
+
+jobs: []
+
+resources: []
