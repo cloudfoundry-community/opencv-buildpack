@@ -23,3 +23,11 @@ If you have access to the CF Community S3 account, you can then upload new compi
 ```
 aws --profile cfcommunity s3 sync tmp/redis-output/blobs s3://redis-buildpack/blobs/redis
 ```
+
+Then update `manifest.yml` with the full path for the download file and the `md5` value:
+
+```
+cat tmp/redis-output/manifest/md5
+```
+
+This really should be automated in future.
