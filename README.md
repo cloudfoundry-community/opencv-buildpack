@@ -32,6 +32,20 @@ Downloaded app package (826B)
 ...
 ```
 
+Next, you can test that your app and the `opencv` library are working with a client app:
+
+```
+cd fixtures/sample
+export SERVER_URL=https://sample-app-with-opencv.cfapps.io
+python3 client.py
+```
+
+The response should be:
+
+```
+{'message': 'image received. size=512x512'}
+```
+
 ## Building latest opencv
 
 The [`packages/opencv`](https://github.com/cloudfoundry-community/opencv-buildpack/tree/master/packages/opencv) folder contains the instructions for compiling + uploading a binary version of OpenCV.
