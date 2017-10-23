@@ -39,3 +39,7 @@ Redis: redis-cli 4.0.2
 ## Background
 
 I also built this buildpack as an experiment in creating a buildpack that owned and operated its own pre-compiled blobs that will be downloaded when you use the buildpack.
+
+## Building latest Redis
+
+The [`packages/redis`](https://github.com/cloudfoundry-community/redis-buildpack/tree/master/packages/redis) folder contains the instructions for compiling + uploading a binary version of Redis.
