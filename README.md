@@ -5,9 +5,9 @@ Cloud Foundry applications can blend multiple buildpacks together. If your appli
 If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from [Keaty Gross at CF Summit EU 2017](https://www.youtube.com/watch?v=41wEXS03U78).
 
 ```
-cf v3-push sample-app-with-redis -p fixtures/sample \
-  -b https://github.com/cloudfoundry-community/redis-buildpack \
-  -b ruby_buildpack
+cf v3-push sample-app-with-opencv -p fixtures/sample \
+  -b https://github.com/cloudfoundry-community/opencv-buildpack \
+  -b python_buildpack
 ```
 
 NOTE: you may need to change `sample-app-with-redis` to something unique if you get an error about the default route already existing on your Cloud Foundry.

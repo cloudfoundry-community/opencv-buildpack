@@ -1,13 +1,13 @@
 ---
-language: redis
+language: opencv
 default_versions:
-- name: redis
-  version: 4.0.2
+- name: opencv
+  version: 3.3.0
 dependencies:
-- name: redis
-  version: 4.0.2
-  uri: http://redis-buildpack.s3-website-us-east-1.amazonaws.com/blobs/redis/redis-compiled-4.0.2.tgz
-  md5: 14b66cc4cfedf97590ea47db94387fe7
+- name: opencv
+  version: 3.3.0
+  uri: http://opencv-buildpack.s3-website-us-east-1.amazonaws.com/blobs/opencv/opencv-compiled-3.3.0.tgz
+  md5: 593dc268f038f5a808beb29344bfa017
   cf_stacks:
   - cflinuxfs2
 include_files:
