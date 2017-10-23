@@ -16,8 +16,8 @@
 [[projects]]
   branch = "master"
   name = "github.com/cloudfoundry/libbuildpack"
-  packages = [".","ansicleaner","cutlass","packager"]
-  revision = "16c75df30b08872e3ede89a44478f9ce77b5fd48"
+  packages = [".","cutlass","packager"]
+  revision = "3b367156a35e6dcc5d4db219c76e8b0a385e22a9"
 
 [[projects]]
   name = "github.com/elazarl/goproxy"
@@ -28,7 +28,7 @@
   branch = "master"
   name = "github.com/golang/mock"
   packages = ["gomock"]
-  revision = "4887ba10eac80f57bfb3de234db4ac970d786511"
+  revision = "61503c535dc549c7ffc1ff07902345658a0f20a2"
 
 [[projects]]
   branch = "master"
@@ -40,7 +40,7 @@
   branch = "master"
   name = "github.com/onsi/gomega"
   packages = [".","format","internal/assertion","internal/asyncassertion","internal/oraclematcher","internal/testingtsupport","matchers","matchers/support/goraph/bipartitegraph","matchers/support/goraph/edge","matchers/support/goraph/node","matchers/support/goraph/util","types"]
-  revision = "dcabb60a477c2b6f456df65037cb6708210fbb02"
+  revision = "283ed655c6b8238afecd5bea6434bc9b03129f2f"
 
 [[projects]]
   name = "github.com/tidwall/gjson"
@@ -57,26 +57,20 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
-  packages = ["html","html/atom","html/charset"]
-  revision = "a04bdaca5b32abe1c069418fb7088ae607de5bd0"
+  packages = ["context","html","html/atom","html/charset"]
+  revision = "92447d55896d6f92b4a0d4fd83bd078b0374e8fa"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "314a259e304ff91bd6985da2a7149bbf91237993"
+  revision = "a1a1f1746d156bbc9954f29134b20ed4ce2752f1"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/text"
   packages = ["encoding","encoding/charmap","encoding/htmlindex","encoding/internal","encoding/internal/identifier","encoding/japanese","encoding/korean","encoding/simplifiedchinese","encoding/traditionalchinese","encoding/unicode","internal/gen","internal/tag","internal/utf8internal","language","runes","transform","unicode/cldr"]
-  revision = "1cbadb444a806fd9430d14ad08967ed91da4fa0a"
-
-[[projects]]
-  branch = "v1"
-  name = "gopkg.in/jarcoal/httpmock.v1"
-  packages = ["."]
-  revision = "cf52904a3cf0f78f199ecade6a6df8e245d5b25a"
+  revision = "c01e4764d870b77f8abe5096ee19ad20d80e8075"
 
 [[projects]]
   branch = "v2"
@@ -87,6 +81,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ff749288bb4ce900df80ad232c7a03d9cad91058b8bbb100e76f86261b7c11ab"
+  inputs-digest = "a1b97c061edffe3d927ceb38091b89f4572c7c98f20cacddab8931f51dedd157"
   solver-name = "gps-cdcl"
   solver-version = 1
