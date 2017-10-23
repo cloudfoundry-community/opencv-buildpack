@@ -9,6 +9,11 @@ import os
 app = Flask(__name__)
 
 # route http posts to this method
+@app.route('/', methods=['GET'])
+def index():
+    return cv2.__version__
+
+# route http posts to this method
 @app.route('/api/test', methods=['POST'])
 def test():
     r = request
