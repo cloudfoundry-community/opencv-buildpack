@@ -2,9 +2,9 @@ package supply_test
 
 import (
 	"io/ioutil"
+	"opencv/supply"
 	"os"
 	"path/filepath"
-	"opencv/supply"
 
 	"bytes"
 
@@ -77,11 +77,6 @@ var _ = Describe("Supply", func() {
 			Expect(supplier.InstallOpenCV()).To(Succeed())
 			Expect(buffer.String()).To(ContainSubstring("-----> Installing opencv"))
 			Expect(buffer.String()).To(ContainSubstring("       Using opencv version 99.99"))
-
-			link, err := os.Readlink(filepath.Join(depDir, "bin", "opencv-cli"))
-			Expect(err).To(BeNil())
-
-			Expect(link).To(Equal("../opencv/bin/opencv-cli"))
 		})
 	})
 })
