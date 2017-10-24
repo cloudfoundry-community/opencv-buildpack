@@ -33,7 +33,7 @@ meta:
     username:      starkandwayne-ci
     icon:          https://www.starkandwayne.com/assets/images/shield-blue-50x50.png
     blob_success:  '(( concat "$BUILD_PIPELINE_NAME: New version of $BUILD_JOB_NAME was detected, and updated in master. <" meta.url "/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME| Cut a new release?>" ))'
-    blob_failure:  '(( concat "$BUILD_PIPELINE_NAME: :airplane_arriving: <" meta.url "/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME| Failed to update the blob for $BUILD_JOB_NAME>" ))'
+    blob_build_failure:  '(( concat "$BUILD_PIPELINE_NAME: :airplane_arriving: <" meta.url "/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME| Failed to build the blob for $BUILD_JOB_NAME>" ))'
 
 groups:
 - name: blobs
@@ -67,6 +67,13 @@ jobs:
         OUTPUT_DIR:   blobs
         VERSION_FROM: opencv/version
         INSTALL_LINUX_PKG: 1
+    on_failure:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_build_failure ))
   - task: update-manifest
     config:
       image_resource:
@@ -101,13 +108,13 @@ jobs:
       file: blobs/opencv-compiled-*.tgz
       acl: public-read
 
-    # on_failure:
-    #   put: notify
-    #   params:
-    #     channel:  (( grab meta.slack.channel ))
-    #     username: (( grab meta.slack.username ))
-    #     icon_url: (( grab meta.slack.icon ))
-    #     text:     (( grab meta.slack.blob_failure ))
+    on_success:
+      put: notify
+      params:
+        channel:  (( grab meta.slack.channel ))
+        username: (( grab meta.slack.username ))
+        icon_url: (( grab meta.slack.icon ))
+        text:     (( grab meta.slack.blob_success ))
 
 resources:
   - name: opencv
