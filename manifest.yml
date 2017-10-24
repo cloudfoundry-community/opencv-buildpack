@@ -4,7 +4,7 @@ default_versions:
 dependencies:
 - cf_stacks:
   - cflinuxfs2
-  md5: 593dc268f038f5a808beb29344bfa017
+  md5: eb269dee073ce42979bcf90443980258
   name: opencv
   uri: http://opencv-buildpack.s3-website-us-east-1.amazonaws.com/blobs/opencv/opencv-compiled-3.3.0.tgz
   version: 3.3.0
