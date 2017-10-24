@@ -82,7 +82,7 @@ jobs:
       outputs:
       - name: pushme
       run:
-        path: ./git/packages/opencv/compile.sh
+        path: ./git/packages/opencv/update_manifest.sh
       params:
         NAME:         opencv
         VERSION_FROM: opencv/version
