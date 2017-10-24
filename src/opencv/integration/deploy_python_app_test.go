@@ -27,7 +27,7 @@ var _ = Describe("deploy a python app", func() {
 	It("succeeds", func() {
 		PushAppAndConfirm(app)
 
-		Expect(app.Stdout.String()).To(ContainSubstring("Installing opencv package"))
+		Expect(app.Stdout.String()).To(ContainSubstring("Installing opencv"))
 		Expect(app.GetBody("/")).To(ContainSubstring("3.3.0"))
 
 		if cutlass.Cached {
