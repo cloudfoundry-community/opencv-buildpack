@@ -14,5 +14,6 @@ include_files:
 - VERSION
 - bin/compile
 - bin/supply
+- scripts/install_go.sh
 - manifest.yml
 language: opencv
