@@ -4,12 +4,26 @@ Cloud Foundry applications can blend multiple buildpacks together. If your appli
 
 If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from Keaty Gross at Cloud Foundry Summit EU 2017 in her [keynote](https://www.youtube.com/watch?v=0DnQNTq8FLw&list=PLhuMOCWn4P9hsn9q-GRTa77gxavTOnHaa&index=59) and [session talk](https://www.youtube.com/watch?v=41wEXS03U78).
 
+* Admins can [download buildpacks](https://github.com/cloudfoundry-community/opencv-buildpack/releases)
+* [Concourse CI](https://ci.starkandwayne.com/teams/main/pipelines/opencv-buildpack)
+* Discussions and CI notifications at [#opencv channel](https://cloudfoundry.slack.com/messages/C7NLFBQLS/) on https://slack.cloudfoundry.org
 
 ## Example
+
+Use the buildpack from its Git repo:
 
 ```
 cf v3-push py-sample-app-with-opencv -p fixtures/py-sample \
   -b https://github.com/cloudfoundry-community/opencv-buildpack \
+  -b python_buildpack
+```
+
+If your administrator has installed `opencv_buildpack`, then you can reference it by name:
+
+```
+cf buildpacks
+cf v3-push py-sample-app-with-opencv -p fixtures/py-sample \
+  -b opencv_buildpack \
   -b python_buildpack
 ```
 
