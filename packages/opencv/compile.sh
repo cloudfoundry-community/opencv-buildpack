@@ -6,7 +6,6 @@ set -e
 VERSION=${VERSION:-$(cat ${VERSION_FROM})}
 
 : ${SRC_DIR:?required}
-: ${SRC_DIR:?required}
 : ${OUTPUT_DIR:?required}
 TMP_SRC_DIR=${TMP_DIR:-/tmp/src}
 TMP_BUILD_DIR=${TMP_DIR:-/tmp/build}
@@ -14,8 +13,10 @@ TMP_BUILD_DIR=${TMP_DIR:-/tmp/build}
 SRC_ZIP=$PWD/$(ls $SRC_DIR/*.zip)
 
 ROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
+SRC_DIR=${ROOTDIR}/${SRC_DIR}
+OUTPUT_DIR=${ROOTDIR}/${OUTPUT_DIR}
 
-if [[ "${INSTALL_LINUX_PKG:-X}" != "X" ]]; then
+if [[ "${SKIP_INSTALL_LINUX_PKG:-X}" == "X" ]]; then
   apt-get update
   apt-get install -y build-essential cmake \
       git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
@@ -46,10 +47,5 @@ mkdir -p ${OUTPUT_DIR}/blobs
 mkdir -p ${OUTPUT_DIR}/manifest
 
 cd $TMP_BUILD_DIR
-tar cfz ${OUTPUT_DIR}/blobs/opencv-compiled-${VERSION}.tgz .
+tar cfz ${OUTPUT_DIR}/opencv-compiled-${VERSION}.tgz .
 cd -
-
-cd ${OUTPUT_DIR}
-echo "${VERSION}" > manifest/version
-echo "opencv-compiled-${VERSION}.tgz" > manifest/filename
-md5sum blobs/opencv-compiled-${VERSION}.tgz | awk '{print $4}' > manifest/md5

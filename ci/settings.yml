@@ -67,10 +67,39 @@ jobs:
         OUTPUT_DIR:   blobs
         VERSION_FROM: opencv/version
         INSTALL_LINUX_PKG: 1
+  - task: update-manifest
+    config:
+      image_resource:
+        type: docker-image
+        source:
+          repository: (( grab meta.image.name ))
+          tag:        (( grab meta.image.tag ))
+      platform: linux
+      inputs:
+      - name: git
+      - name: blobs
+      outputs:
+      - name: pushme
+      run:
+        path: ./git/packages/opencv/compile.sh
+      params:
+        NAME:         opencv
+        VERSION_FROM: opencv/version
+        REPO_ROOT:      git
+        REPO_OUT:       pushme
+        BLOB_NAME:      opencv
+        BLOB:           blobs/opencv-compiled-*.tgz
+        DOWNLOAD_ROOT_URL: (( concat "http://" meta.aws.bucket ".s3-website-" meta.aws.region_name ".amazonaws.com" ))
+  - name: upload-git
+    put: git
+    params:
+      rebase: true
+      repository: pushme
   - put: opencv-blob
     params:
       file: blobs/opencv-compiled-*.tgz
       acl: public-read
+
     # on_failure:
     #   put: notify
     #   params:
