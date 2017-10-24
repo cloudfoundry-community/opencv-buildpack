@@ -17,3 +17,4 @@ include_files:
 - scripts/install_go.sh
 - manifest.yml
 language: opencv
+pre_package: scripts/build.sh
