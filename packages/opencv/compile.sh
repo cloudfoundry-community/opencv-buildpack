@@ -11,6 +11,8 @@ VERSION=${VERSION:-$(cat ${VERSION_FROM})}
 TMP_SRC_DIR=${TMP_DIR:-/tmp/src}
 TMP_BUILD_DIR=${TMP_DIR:-/tmp/build}
 
+SRC_ZIP=$PWD/$(ls $SRC_DIR/opencv-*.zip)
+
 ROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
 
 if [[ "${INSTALL_LINUX_PKG:-X}" != "X" ]]; then
@@ -30,7 +32,7 @@ mkdir -p $TMP_SRC_DIR
 cd $TMP_SRC_DIR
 rm -rf opencv-*/
 
-unzip $SRC_DIR/opencv-*.zip
+unzip $SRC_ZIP
 cd opencv-*/
 mkdir release
 cd release
