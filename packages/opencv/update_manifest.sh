@@ -20,7 +20,7 @@ dependencies:
 - name:    ${BLOB_NAME}
   version: ${VERSION}
   uri:     "${DOWNLOAD_ROOT_URL}/blobs/${BLOB_NAME}/$(basename ${BLOB})"
-  md5:     "$(md5sum ${BLOB} | awk '{print $4}')"
+  md5:     "$(md5sum ${BLOB} | awk '{print $1}')"
   cf_stacks: [cflinuxfs2]
 YAML
 
@@ -35,25 +35,22 @@ if [[ -z $(git config --global user.name) ]]; then
   git config --global user.name "CI Bot"
 fi
 
-pushd ${REPO_OUT}
-  cat <<EOF >>ci/release_notes.md
+cat <<EOF >>${REPO_OUT}/ci/release_notes.md
 
 ## ${BLOB_NAME}
 Bumped to v${VERSION}
 EOF
-  popd
 
-  # GIT!
-  if [[ -z $(git config --global user.email) ]]; then
-    git config --global user.email "ci@starkandwayne.com"
-  fi
-  if [[ -z $(git config --global user.name) ]]; then
-    git config --global user.name "CI Bot"
-  fi
-
-  (cd ${REPO_ROOT}
-   git merge --no-edit ${BRANCH}
-   git add -A
-   git status
-   git commit -m "Bumped ${BLOB_NAME} to v${VERSION}")
+# GIT!
+if [[ -z $(git config --global user.email) ]]; then
+  git config --global user.email "ci@starkandwayne.com"
 fi
+if [[ -z $(git config --global user.name) ]]; then
+  git config --global user.name "CI Bot"
+fi
+
+cd ${REPO_OUT}
+git merge --no-edit ${BRANCH}
+git add -A
+git status
+git commit -m "Bumped ${BLOB_NAME} to v${VERSION}"
