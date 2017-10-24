@@ -47,7 +47,7 @@ jobs:
   - aggregate:
     - { get: git }
     - { get: opencv, trigger: true, params: { include_source_zip: true, globs: ["skip"] }}
-  - task: update-opencv
+  - task: build-opencv
     config:
       image_resource:
         type: docker-image
@@ -67,6 +67,10 @@ jobs:
         OUTPUT_DIR:   blobs
         VERSION_FROM: opencv/version
         INSTALL_LINUX_PKG: 1
+  - put: opencv-blob
+    params:
+      file: blobs/opencv-compiled-*.tgz
+      acl: public-read
     # on_failure:
     #   put: notify
     #   params:
@@ -82,3 +86,12 @@ resources:
       user:         opencv
       repository:   opencv
       access_token: (( grab meta.github.access_token ))
+
+  - name: opencv-blob
+    type: s3
+    source:
+      regexp: blobs/opencv/opencv-compiled-(.*).tgz
+      bucket: (( grab meta.aws.bucket ))
+      region: (( grab meta.aws.region_name ))
+      access_key_id: (( grab meta.aws.access_key ))
+      secret_access_key: (( grab meta.aws.secret_key ))
