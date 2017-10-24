@@ -46,7 +46,7 @@ jobs:
   plan:
   - aggregate:
     - { get: git }
-    - { get: opencv, trigger: true, params: { include_source_tarball: true }}
+    - { get: opencv, trigger: true, params: { include_source_zip: true, globs: [] }}
   - task: update-opencv
     config:
       image_resource:
