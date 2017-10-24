@@ -89,6 +89,7 @@ jobs:
 
   - name: integration-tests
     public: true
+    serial: true
     plan:
     - do:
       - aggregate:
