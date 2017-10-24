@@ -11,7 +11,7 @@ VERSION=${VERSION:-$(cat ${VERSION_FROM})}
 TMP_SRC_DIR=${TMP_DIR:-/tmp/src}
 TMP_BUILD_DIR=${TMP_DIR:-/tmp/build}
 
-SRC_ZIP=$PWD/$(ls $SRC_DIR/opencv-*.zip)
+SRC_ZIP=$PWD/$(ls $SRC_DIR/*.zip)
 
 ROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
 

@@ -46,7 +46,7 @@ jobs:
   plan:
   - aggregate:
     - { get: git }
-    - { get: opencv, trigger: true, params: { include_source_zip: true, globs: [] }}
+    - { get: opencv, trigger: true, params: { include_source_zip: true, globs: ["skip"] }}
   - task: update-opencv
     config:
       image_resource:
@@ -63,7 +63,7 @@ jobs:
       run:
         path: ./git/packages/opencv/compile.sh
       params:
-        SRC_DIR:      git
+        SRC_DIR:      opencv
         OUTPUT_DIR:   blobs
         VERSION_FROM: opencv/version
         INSTALL_LINUX_PKG: 1
