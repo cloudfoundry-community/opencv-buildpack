@@ -15,6 +15,8 @@
 : ${NOTIFICATION_OUT:?required}
 : ${REPO_BRANCH:?required}
 : ${REPO_URL:?required}
+: ${GIT_EMAIL:?required}
+: ${GIT_NAME:?required}
 
 if [[ ! -f ${VERSION_FROM} ]]; then
   echo >&2 "Version file (${VERSION_FROM}) not found.  Did you misconfigure Concourse?"
@@ -60,10 +62,10 @@ EOF
 
 # GIT!
 if [[ -z $(git config --global user.email) ]]; then
-  git config --global user.email "ci@starkandwayne.com"
+  git config --global user.email "${GIT_EMAIL}"
 fi
 if [[ -z $(git config --global user.name) ]]; then
-  git config --global user.name "CI Bot"
+  git config --global user.name "${GIT_NAME}"
 fi
 
 (cd ${REPO_OUT}

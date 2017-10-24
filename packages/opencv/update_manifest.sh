@@ -8,6 +8,8 @@ set -e
 : ${BLOB_NAME:?required}
 : ${BLOB:?required}
 : ${DOWNLOAD_ROOT_URL:?required}
+: ${GIT_EMAIL:?required}
+: ${GIT_NAME:?required}
 
 # either set $VERSION, or pass in from ${VERSION_FROM} file (e.g. concourse resource)
 VERSION=${VERSION:-$(cat ${VERSION_FROM})}
@@ -29,10 +31,10 @@ spruce merge ${REPO_ROOT}/manifest.yml $TMP_DIR/dependencies.yml > ${REPO_OUT}/m
 
 # GIT!
 if [[ -z $(git config --global user.email) ]]; then
-  git config --global user.email "ci@starkandwayne.com"
+  git config --global user.email "${GIT_EMAIL}"
 fi
 if [[ -z $(git config --global user.name) ]]; then
-  git config --global user.name "CI Bot"
+  git config --global user.name "${GIT_NAME}"
 fi
 
 cat <<EOF >>${REPO_OUT}/ci/release_notes.md

@@ -6,6 +6,10 @@ meta:
 
   initial_version: 0.2.0
 
+  git:
+    email:  ci@starkandwayne.com
+    name:   "CI Bot"
+
   buildpack-compile-image:
     name: cloudfoundry/cflinuxfs2
     tag: latest
@@ -98,6 +102,8 @@ jobs:
         BLOB_NAME:      opencv
         BLOB:           blobs/opencv-compiled-*.tgz
         DOWNLOAD_ROOT_URL: (( concat "http://" meta.aws.bucket ".s3-website-" meta.aws.region_name ".amazonaws.com" ))
+        GIT_EMAIL:      (( grab meta.git.email ))
+        GIT_NAME:       (( grab meta.git.name ))
   - name: upload-git
     put: git
     params:

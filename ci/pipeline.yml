@@ -17,6 +17,10 @@ meta:
   target:   (( param "Please identify the name of the target Concourse CI" ))
   url:      (( param "Please specify the full url of the target Concourse CI" ))
 
+  git:
+    email:  (( param "Please provide the git email for automated commits" ))
+    name:   (( param "Please provide the git name for automated commits" ))
+
   image:
     name: starkandwayne/concourse-go
     tag: 1.9
@@ -207,6 +211,8 @@ jobs:
             REPO_BRANCH:    (( grab meta.github.branch ))
             REPO_URL:       (( concat "https://github.com/" meta.github.owner "/" meta.github.repo ))
             NOTIFICATION_OUT: notifications
+            GIT_EMAIL:      (( grab meta.git.email ))
+            GIT_NAME:       (( grab meta.git.name ))
 
       - name: upload-git
         put: git
