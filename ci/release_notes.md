@@ -1,3 +1,3 @@
 
 ## opencv
-Bumped to v3.3.1
+Bumped to v3.3.1. Made the default.
