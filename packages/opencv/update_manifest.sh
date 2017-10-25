@@ -19,6 +19,7 @@ BLOB=$(ls $BLOB)
 
 cat > $TMP_DIR/dependencies.yml <<YAML
 dependencies:
+- ((merge on version))
 - name:    ${BLOB_NAME}
   version: ${VERSION}
   uri:     "${DOWNLOAD_ROOT_URL}/blobs/${BLOB_NAME}/$(basename ${BLOB})"
