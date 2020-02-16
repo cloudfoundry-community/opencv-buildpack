@@ -8,7 +8,7 @@ import os
 # Initialize the Flask application
 app = Flask(__name__)
 
-# route http posts to this method
+# route http gets to this method
 @app.route('/', methods=['GET'])
 def index():
     return cv2.__version__
@@ -35,5 +35,5 @@ def test():
 
 
 # start flask app
-port = os.getenv('PORT', 5000)
+port = int(os.getenv('PORT', 5000))
 app.run(host="0.0.0.0", port=port)
