@@ -27,7 +27,7 @@ dependencies:
   version: ${BLOB_NAME}
   uri:     "${DOWNLOAD_ROOT_URL}/blobs/${BLOB_NAME}/$(basename ${BLOB})"
   md5:     "$(md5sum ${BLOB} | awk '{print $1}')"
-  cf_stacks: [cflinuxfs2]
+  cf_stacks: [cflinuxfs3]
 YAML
 
 git clone ${REPO_ROOT} ${REPO_OUT}

@@ -58,7 +58,7 @@ var _ = Describe("Manifest", func() {
 		Context("Stack is supported", func() {
 			BeforeEach(func() {
 				manifestDir = "fixtures/manifest/stacks"
-				err = os.Setenv("CF_STACK", "cflinuxfs2")
+				err = os.Setenv("CF_STACK", "cflinuxfs3")
 				Expect(err).To(BeNil())
 			})
 

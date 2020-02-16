@@ -34,7 +34,7 @@ var _ = Describe("Packager", func() {
 
 | name | version | cf_stacks |
 |-|-|-|
-| ruby | 1.2.3 | cflinuxfs2 |
+| ruby | 1.2.3 | cflinuxfs3 |
 
 Default binary versions:
 
@@ -53,8 +53,8 @@ Default binary versions:
 
 | name | version | cf_stacks | modules |
 |-|-|-|-|
-| nginx | 1.7.3 | cflinuxfs2 |  |
-| php | 1.6.1 | cflinuxfs2 | gearman, geoip, zlib |
+| nginx | 1.7.3 | cflinuxfs3 |  |
+| php | 1.6.1 | cflinuxfs3 | gearman, geoip, zlib |
 `))
 			})
 		})

@@ -1,4 +1,4 @@
-# Build opencv within cflinuxfs2
+# Build opencv within cflinuxfs3
 
 Our buildpack users will need to download a pre-compiled version of opencv. This Dockerfile describes how to compile opencv and output it as a `tgz` file. Another part of the toolchain will upload the tgz to a public place, from which buildpack users will download it on demand.
 
@@ -15,7 +15,7 @@ docker run -ti \
   -v $PWD/tmp/opencv-output:/opencv-output \
   -e SRC_DIR=/opencv-src \
   -e OUTPUT_DIR=/opencv-output \
-  cloudfoundry/cflinuxfs2 \
+  cloudfoundry/cflinuxfs3 \
   /buildpack/packages/opencv/compile.sh
 ```
 

@@ -11,7 +11,7 @@ meta:
     name:   "CI Bot"
 
   buildpack-compile-image:
-    name: cloudfoundry/cflinuxfs2
+    name: cloudfoundry/cflinuxfs3
     tag: latest
 
   cf:
