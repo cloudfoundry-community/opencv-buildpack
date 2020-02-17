@@ -66,8 +66,8 @@ func executeDockerFile(bp_dir, fixture_path, buildpack_path string, envs []strin
 }
 
 func dockerfile(fixture_path, buildpack_path string, envs []string, network_command string) string {
-	out := "FROM cloudfoundry/cflinuxfs2\n" +
-		"ENV CF_STACK cflinuxfs2\n" +
+	out := "FROM cloudfoundry/cflinuxfs3\n" +
+		"ENV CF_STACK cflinuxfs3\n" +
 		"ENV VCAP_APPLICATION {}\n"
 	for _, env := range envs {
 		out = out + "ENV " + env + "\n"

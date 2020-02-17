@@ -7,7 +7,7 @@ dependencies:
   md5: fffffff
   uri: https://www.ietf.org/rfc/rfc2324.txt
   cf_stacks:
-  - cflinuxfs2
+  - cflinuxfs3
 include_files:
 - manifest.yml
 - VERSION
